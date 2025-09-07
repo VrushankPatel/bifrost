@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bifrost AI Design System - Professional Neutral Palette */
+
+@layer base {
+  :root {
+    /* Light Mode - Professional Neutral Palette */
+    --background: 0 0% 98%;          /* Soft White #FAFAFA */
+    --foreground: 0 0% 9%;           /* Near Black */
+    
+    /* Surfaces & Cards */
+    --surface: 240 5% 96%;           /* Cool Gray #F4F4F5 */
+    --surface-elevated: 0 0% 100%;   /* Pure White for elevated elements */
+    --surface-glass: 0 0% 98% / 0.8; /* Glassmorphism base */
+    
+    /* Chat Interface */
+    --chat-background: 0 0% 98%;
+    --user-message: var(--primary);
+    --user-message-foreground: 0 0% 100%;
+    --assistant-message: 0 0% 100%;
+    --assistant-message-foreground: 0 0% 9%;
+    
+    /* Sidebar Glassmorphism */
+    --sidebar-background: 240 5% 96% / 0.85;
+    --sidebar-surface: 0 0% 100% / 0.6;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90% / 0.5;
+    
+    /* Interactive Elements */
+    --primary: 142 76% 36%;          /* Default Emerald Green */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 94%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 35 91% 50%;            /* Warm Amber #f39c12 */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 0 0% 90%;
+    --input: 0 0% 100%;
+    --input-border: 0 0% 88%;
+    --ring: var(--primary);
+    
+    /* Status & Feedback */
+    --success: var(--primary);
+    --success-foreground: 0 0% 100%;
+    --warning: 35 91% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Muted Elements */
+    --muted: 240 5% 94%;
+    --muted-foreground: 0 0% 45%;
+    
+    /* Card & Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    
+    /* Glass Effects */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark Mode - Charcoal & Graphite Professional Palette */
+    --background: 0 0% 7%;           /* Charcoal #121212 */
+    --foreground: 0 0% 98%;          /* Near White */
+    
+    /* Surfaces & Cards */
+    --surface: 0 0% 12%;             /* Graphite Gray #1E1E1E */
+    --surface-elevated: 0 0% 15%;    /* Slightly elevated graphite */
+    --surface-glass: 0 0% 12% / 0.8; /* Glassmorphism base */
+    
+    /* Chat Interface */
+    --chat-background: 0 0% 7%;
+    --user-message: var(--primary);
+    --user-message-foreground: 0 0% 100%;
+    --assistant-message: 0 0% 15%;
+    --assistant-message-foreground: 0 0% 95%;
+    
+    /* Sidebar Glassmorphism */
+    --sidebar-background: 0 0% 12% / 0.85;
+    --sidebar-surface: 0 0% 15% / 0.6;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 25% / 0.5;
+    
+    /* Interactive Elements */
+    --primary: 142 76% 45%;          /* Default Emerald Green - brighter for dark */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --accent: 35 91% 55%;            /* Warm Amber - brighter for dark */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --input-border: 0 0% 30%;
+    --ring: var(--primary);
+    
+    /* Status & Feedback */
+    --success: var(--primary);
+    --success-foreground: 0 0% 100%;
+    --warning: 35 91% 55%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Muted Elements */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Card & Popover */
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Glass Effects */
+    --glass-bg: 0 0% 15% / 0.7;
+    --glass-border: 0 0% 25% / 0.2;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  /* Accent Color Themes */
+  [data-accent="emerald"] {
+    --primary: 142 76% 36%;
+  }
+  
+  [data-accent="emerald"].dark {
+    --primary: 142 76% 45%;
+  }
+
+  [data-accent="blue"] {
+    --primary: 221 83% 53%;
+  }
+  
+  [data-accent="blue"].dark {
+    --primary: 221 83% 58%;
+  }
+
+  [data-accent="purple"] {
+    --primary: 262 83% 58%;
+  }
+  
+  [data-accent="purple"].dark {
+    --primary: 262 83% 63%;
+  }
+
+  [data-accent="amber"] {
+    --primary: 43 96% 56%;
+  }
+  
+  [data-accent="amber"].dark {
+    --primary: 43 96% 61%;
+  }
+
+  [data-accent="rose"] {
+    --primary: 346 77% 49%;
+  }
+  
+  [data-accent="rose"].dark {
+    --primary: 346 77% 54%;
+  }
+
+  [data-accent="indigo"] {
+    --primary: 239 84% 67%;
+  }
+  
+  [data-accent="indigo"].dark {
+    --primary: 239 84% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+  
+  /* Glass morphism utility classes */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+  }
+  
+  .glass-subtle {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: hsl(var(--surface-glass));
+  }
+}
