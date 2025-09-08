@@ -10,6 +10,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useAppConfig } from '@/hooks/useAppConfig';
+import { useBackendStatus } from '@/hooks/useBackendStatus';
+import { ConnectionStatus } from './ConnectionStatus';
+import { ModelSelector } from './ModelSelector';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
 
@@ -20,8 +23,10 @@ interface ConfigPanelProps {
 
 export const ConfigPanel: React.FC<ConfigPanelProps> = ({ isOpen, onClose }) => {
   const { config, updateBackend, updateTheme } = useAppConfig();
+  const { status, availableModels, refreshModels } = useBackendStatus();
   const [tempBackend, setTempBackend] = useState(config.backend);
   const [tempTheme, setTempTheme] = useState(config.theme.accentColor);
+  const [selectedModel, setSelectedModel] = useState('llama3.2');
 
   const handleSave = () => {
     updateBackend(tempBackend);
@@ -34,6 +39,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({ isOpen, onClose }) => 
       webSearchEnabled: config.webSearchEnabled,
       timestamp: new Date().toISOString(),
       userId: 'user-123', // This would come from authentication
+      model: selectedModel
     };
     
     console.log('Configuration payload for backend:', configPayload);
@@ -57,6 +63,9 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({ isOpen, onClose }) => 
       type,
       port: defaultPorts[type]
     });
+    
+    // Refresh models when backend type changes
+    refreshModels(type);
   };
 
   const accentColors = [
@@ -106,6 +115,9 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({ isOpen, onClose }) => 
               </DialogHeader>
               
               <div className="space-y-6 mt-6">
+                {/* Connection Status */}
+                <ConnectionStatus status={status} isLoading={false} />
+
                 {/* Backend Type Selection */}
                 <div className="space-y-3">
                   <Label htmlFor="backend-type" className="text-sm font-semibold">
@@ -175,6 +187,20 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({ isOpen, onClose }) => 
                   />
                   <p className="text-xs text-muted-foreground font-medium">
                     Make sure your {backendInfo[tempBackend.type].name} server is running on this port.
+                  </p>
+                </div>
+
+                {/* Model Selection */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-semibold">Available Models</Label>
+                  <ModelSelector
+                    availableModels={availableModels}
+                    selectedModel={selectedModel}
+                    onModelChange={setSelectedModel}
+                    disabled={!status || status.status === 'unhealthy'}
+                  />
+                  <p className="text-xs text-muted-foreground font-medium">
+                    Select a model from your {backendInfo[tempBackend.type].name} installation.
                   </p>
                 </div>
 

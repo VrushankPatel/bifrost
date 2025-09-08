@@ -26,6 +26,20 @@ export interface AppConfig {
   webSearchEnabled: boolean;
 }
 
+export interface BackendStatus {
+  status: 'healthy' | 'degraded' | 'unhealthy';
+  model_provider: string;
+  backend_health: {
+    status: string;
+    provider: string;
+  };
+}
+
+export interface AvailableModels {
+  models: string[];
+  provider: string;
+}
+
 export interface ChatPayload {
   conversationId?: string;
   query: string;

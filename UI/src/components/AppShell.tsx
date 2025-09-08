@@ -8,6 +8,7 @@ import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { BifrostIcon } from './BifrostIcon';
 import { useAppConfig } from '@/hooks/useAppConfig';
+import { ConversationsProvider } from '@/hooks/useConversations';
 
 export const AppShell: React.FC = () => {
   const [isConfigOpen, setIsConfigOpen] = useState(false);
@@ -42,6 +43,7 @@ export const AppShell: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
+      <ConversationsProvider>
       {/* Glassmorphism Sidebar */}
       <motion.div 
         className="w-80 glass-subtle border-r border-sidebar-border flex flex-col relative"
@@ -98,6 +100,7 @@ export const AppShell: React.FC = () => {
           />
         )}
       </AnimatePresence>
+      </ConversationsProvider>
     </motion.div>
   );
 };

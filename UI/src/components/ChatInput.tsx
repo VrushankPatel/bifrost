@@ -58,7 +58,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
       transition={{ duration: 0.3 }}
     >
       <motion.div 
-        className="relative flex items-end gap-4 p-4 bg-surface-elevated/80 backdrop-blur-xl border border-border/50 rounded-3xl shadow-lg glass-subtle focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all duration-300"
+        className="relative flex items-end gap-4 p-4 bg-surface-elevated/80 backdrop-blur-xl border border-border/50 rounded-none shadow-lg glass-subtle focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all duration-300"
         whileFocus={{ scale: 1.01 }}
       >
         {/* Attachment Button */}
@@ -112,7 +112,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
               onClick={handleStop}
               size="sm"
               variant="secondary"
-              className="rounded-2xl px-4 py-2 h-10 shadow-sm"
+              className="rounded-none px-4 py-2 h-10 shadow-sm"
             >
               <Square className="h-3 w-3 mr-2" />
               Stop
@@ -127,7 +127,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
               type="submit"
               disabled={!message.trim()}
               size="sm"
-              className="rounded-2xl px-4 py-2 h-10 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm font-medium"
+              className="rounded-none px-4 py-2 h-10 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm font-medium"
             >
               <Send className="h-4 w-4" />
             </Button>

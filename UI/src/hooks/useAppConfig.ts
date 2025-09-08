@@ -23,8 +23,7 @@ export const useAppConfig = () => {
   const loadConfig = async () => {
     try {
       // Try to load from backend first
-      const backendConfig = JSON.parse(localStorage.getItem('backendConfig') || '{"type": "ollama", "port": 11434}');
-      const response = await fetch(`http://localhost:${backendConfig.port}/api/config`);
+      const response = await fetch('http://localhost:8000/api/config');
       
       if (response.ok) {
         const serverConfig = await response.json();
@@ -62,7 +61,7 @@ export const useAppConfig = () => {
     
     try {
       // Try to save to backend first
-      const response = await fetch(`http://localhost:${config.backend.port}/api/config`, {
+      const response = await fetch('http://localhost:8000/api/config', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedConfig)

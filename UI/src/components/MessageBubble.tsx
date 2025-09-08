@@ -99,7 +99,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           "opacity-0 group-hover:opacity-100 transition-all duration-200",
           isUser ? "right-5 -bottom-6" : "left-5 -bottom-6"
         )}>
-          {message.timestamp.toLocaleTimeString([], { 
+          {new Date(message.timestamp as any).toLocaleTimeString([], { 
             hour: '2-digit', 
             minute: '2-digit' 
           })}

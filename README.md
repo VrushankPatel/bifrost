@@ -16,21 +16,83 @@ A beautiful, modern ChatGPT-like interface built with React, TypeScript, and Tai
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React 18 + TypeScript + Vite
+### Frontend
+- **Framework**: React 18 + TypeScript + Vite
 - **Styling**: Tailwind CSS + ShadCN UI + Custom Design System
 - **State Management**: React Hooks + Custom Hooks
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 - **Storage**: localStorage + Backend API integration
 
+### Backend
+- **Framework**: FastAPI + Uvicorn
+- **Database**: SQLite + SQLAlchemy ORM
+- **AI Integration**: Ollama + LM Studio
+- **Web Search**: DuckDuckGo Search + Nomic Embeddings
+- **Dependency Management**: UV (recommended) or pip
+
 ## 🔧 Installation & Setup
 
-### Frontend Setup
+### Quick Start (Full Stack)
+
+1. **Clone the repository:**
+```bash
+git clone <your-repo-url>
+cd Bifrost
+```
+
+2. **Install AI Backend (Choose one):**
+
+**Option A: Ollama (Recommended)**
+```bash
+# Install Ollama
+brew install ollama  # macOS
+# or curl -fsSL https://ollama.ai/install.sh | sh  # Linux
+
+# Start Ollama server
+ollama serve
+
+# Pull required models (in another terminal)
+ollama pull llama3.2
+ollama pull nomic-embed-text
+```
+
+**Option B: LM Studio**
+```bash
+# Download from https://lmstudio.ai
+# Install and start local server
+lms server start
+```
+
+3. **Setup Backend:**
+```bash
+cd backend
+uv pip install -r requirements.txt  # or pip install -r requirements.txt
+python run.py
+```
+
+**Or use the automated setup:**
+```bash
+./setup.sh
+```
+
+4. **Setup Frontend:**
+```bash
+cd ../UI
+npm install
+npm run build
+```
+
+5. **Access the application:**
+- Open http://localhost:8000 in your browser
+- The backend serves both API and frontend
+
+### Frontend Only Setup
 
 1. **Clone and install dependencies:**
 ```bash
 git clone <your-repo-url>
-cd bifrost-ai-assistant
+cd Bifrost/UI
 npm install
 ```
 
